@@ -1,0 +1,277 @@
+{
+	"info": {
+		"_postman_id": "0ffa26c1-5e78-40c7-a485-6a64d9698136",
+		"name": "Trello",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23215174"
+	},
+	"item": [
+		{
+			"name": "create board",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{base url}}/1/boards/?name=babu&key={{api key}}&token={{token for trello}}",
+					"host": [
+						"{{base url}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						""
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "babu"
+						},
+						{
+							"key": "key",
+							"value": "{{api key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token for trello}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete board",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base url}}/1/boards/zTxbToTx?key={{api key}}&token={{token for trello}}",
+					"host": [
+						"{{base url}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"zTxbToTx"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{api key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token for trello}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update board",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"latha\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base url}}/1/boards/631ef99218f738003d224687?key={{api key}}&token={{token for trello}}",
+					"host": [
+						"{{base url}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"631ef99218f738003d224687"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{api key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token for trello}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All boards",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base url}}/1/members/me/boards?key={{api key}}&token={{token for trello}}",
+					"host": [
+						"{{base url}}"
+					],
+					"path": [
+						"1",
+						"members",
+						"me",
+						"boards"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{api key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token for trello}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a board",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base url}}/1/boards/631ef99218f738003d224687?key={{api key}}&token={{token for trello}}",
+					"host": [
+						"{{base url}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"631ef99218f738003d224687"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{api key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token for trello}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "creat a list",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://api.trello.com/1/boards/631efccfd1e01c039a42e460/lists?name=sri&key={{api key}}&token={{token for trello}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"boards",
+						"631efccfd1e01c039a42e460",
+						"lists"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "sri"
+						},
+						{
+							"key": "key",
+							"value": "{{api key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token for trello}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add card to a list",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"sign out\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base url}}/1/cards?idList=631f0773308d1902a6f252f1&key={{api key}}&token={{token for trello}}",
+					"host": [
+						"{{base url}}"
+					],
+					"path": [
+						"1",
+						"cards"
+					],
+					"query": [
+						{
+							"key": "idList",
+							"value": "631f0773308d1902a6f252f1"
+						},
+						{
+							"key": "key",
+							"value": "{{api key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token for trello}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All cards in a list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base url}}/1/lists/631f0773308d1902a6f252f1/cards?key={{api key}}&token={{token for trello}}",
+					"host": [
+						"{{base url}}"
+					],
+					"path": [
+						"1",
+						"lists",
+						"631f0773308d1902a6f252f1",
+						"cards"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{api key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token for trello}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

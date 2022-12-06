@@ -1,0 +1,199 @@
+{
+	"info": {
+		"_postman_id": "9d2c9f7c-9c21-45be-9d76-402b345191e2",
+		"name": "order pizza",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23215174"
+	},
+	"item": [
+		{
+			"name": "user id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"const jsondata= pm.response.json()\r",
+							"pm.environment.set(\"pizzatoken\", jsondata.access_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"test\",\r\n    \"password\":\"test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://order-pizza-api.herokuapp.com/api/auth",
+					"protocol": "https",
+					"host": [
+						"order-pizza-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "creat order",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{pizzatoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Crust\": \"Thin\",\r\n\t\t\"Flavor\": \"corn\",\r\n\t\t\"Size\": \"s\",\r\n\t\t\"Table_No\": 12\r\n\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://order-pizza-api.herokuapp.com/api/orders",
+					"protocol": "https",
+					"host": [
+						"order-pizza-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all pizza orders",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"const datavalue=pm.response.json();\r",
+							"//console.log(datavalue);\r",
+							"var len=datavalue.length;\r",
+							"console.log(len);\r",
+							"for(var i=0;i<len;i++)\r",
+							"{\r",
+							"    //console.log(i);\r",
+							"    //test=datavalue[i];\r",
+							"    //console.log(test);\r",
+							"     if(datavalue[i].Flavor == \"CHICKEN-FAJITA\")\r",
+							"     {\r",
+							"      //console.log(datavalue[i].Flavor);\r",
+							"       var orderiddata=datavalue[i].Order_ID;\r",
+							"        //console.log(orderiddata);\r",
+							"         pm.environment.set(\"oiddata\", orderiddata);\r",
+							"     }\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{pizzatoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://order-pizza-api.herokuapp.com/api/orders",
+					"protocol": "https",
+					"host": [
+						"order-pizza-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete order by id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{pizzatoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://order-pizza-api.herokuapp.com/api/orders/{{oiddata}}",
+					"protocol": "https",
+					"host": [
+						"order-pizza-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"orders",
+						"{{oiddata}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
